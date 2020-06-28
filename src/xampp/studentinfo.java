@@ -1,0 +1,1503 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package xampp;
+
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import net.proteanit.sql.DbUtils;
+/**
+ *
+ * @author AMD
+ */
+public class studentinfo extends javax.swing.JFrame {
+ResultSet rs;
+PreparedStatement st;
+Connection con;
+
+
+    /**
+     * Creates new form studentinfo
+     */
+    public studentinfo() {
+        initComponents();
+       update_table();
+        qwe.setBackground(new Color(10,153,204));
+        qwe.setForeground(Color.white);
+        qwe.setShowGrid(true);
+        qwe.setGridColor(Color.black);
+       
+         jTextField1.setEnabled(true);
+        ImageIcon myimage = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("student.jpg")));
+        Image img1 = myimage.getImage();
+        Image img2 = img1.getScaledInstance(jLabel1.getWidth(),jLabel1.getHeight(),Image.SCALE_SMOOTH);
+        ImageIcon a = new ImageIcon(img2);
+        jLabel1.setIcon(a);
+          ImageIcon myimage7 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("2.png")));
+        Image img15 = myimage7.getImage();
+        Image img16 = img15.getScaledInstance(jLabel7.getWidth(),jLabel7.getHeight(),Image.SCALE_SMOOTH);
+        ImageIcon h = new ImageIcon(img16);
+        jLabel7.setIcon(h);
+        jLabel2.setBackground(new Color(200,200,200,150));
+        
+  
+    
+    
+    
+    }
+    
+    
+    
+ /*   
+public ArrayList<connection>userList(){
+       ArrayList<connection> userList = new ArrayList();
+           
+           try{
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/student","root","");
+        String sql = "select * from studentinfo";
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+        connection user;
+        while(rs.next()){
+        user=new connection(rs.getInt("Student No."),rs.getString("First Name")
+                           ,rs.getString("Last Name"),rs.getString("Middle Name"),rs.getString("Date Of Birth"),rs.getInt("Age")
+                           ,rs.getString("Gender"),rs.getString("Course"),rs.getString("Section"),rs.getString("Gmail")
+                           ,rs.getInt("Contact No."),rs.getBytes("Image"));
+        userList.add(user);
+        }
+        
+        }
+        catch(Exception e){
+        e.printStackTrace();
+        }
+           return userList;
+       }
+       public void show_user(){
+        ArrayList<connection> List = userList();
+       DefaultTableModel model = (DefaultTableModel) qwe.getModel();
+        
+       Object[] row = new Object[12];
+       for(int i=0;i<List.size();i++){
+       row[0]=List.get(i).getStudentNo();
+       row[1]=List.get(i).getfirstname();
+       row[2]=List.get(i).getlastname();
+       row[3]=List.get(i).getmiddlename();
+       row[4]=List.get(i).getdateofbirth();
+      row[7]=List.get(i).getcourse();
+       row[8]=List.get(i).getsection();
+       row[9]=List.get(i).getgmail();
+       row[10]=List.get(i).getcontact();
+        row[11]=List.get(i).getimage();
+       
+       model.addRow(row);
+       }
+       }    row[5]=List.get(i).getage();
+       row[6]=List.get(i).getgender();
+       row[7]=List.get(i).getcourse();
+       row[8]=List.get(i).getsection();
+       row[9]=List.get(i).getgmail();
+       row[10]=List.get(i).getcontact();
+        row[11]=List.get(i).getimage();
+       
+       model.addRow(row);
+       }
+       }
+*/
+ private void update_table(){
+     String currentDir=System.getProperty("user.dir");
+     try {
+             Connection con = DriverManager.getConnection("jdbc:derby:"+currentDir+"\\student1","andrew","andrew");
+         String sql =  "SELECT * FROM studentinformation";
+             st = con.prepareStatement(sql);
+             rs = st.executeQuery();
+       qwe.setModel(DbUtils.resultSetToTableModel(rs));
+    } catch (SQLException ex) {
+        Logger.getLogger(studentinfo.class.getName()).log(Level.SEVERE, null, ex);
+    }
+           
+   }
+  
+    
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jScrollBar1 = new javax.swing.JScrollBar();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jPanel2 = new javax.swing.JPanel();
+        logout = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jTextField9 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        add = new javax.swing.JLabel();
+        update = new javax.swing.JLabel();
+        delete = new javax.swing.JLabel();
+        clear = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jSeparator7 = new javax.swing.JSeparator();
+        jSeparator8 = new javax.swing.JSeparator();
+        jSeparator9 = new javax.swing.JSeparator();
+        jSeparator1 = new javax.swing.JSeparator();
+        jTextField11 = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        qwe = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Student Information By Andrew Marquez");
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        logout.setBackground(java.awt.Color.red);
+        logout.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        logout.setForeground(new java.awt.Color(255, 255, 255));
+        logout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logout.setText("Log Out");
+        logout.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        logout.setOpaque(true);
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logoutMouseExited(evt);
+            }
+        });
+        jPanel2.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(812, 260, 128, 30));
+
+        jTextField1.setBackground(new java.awt.Color(51, 51, 51));
+        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTextField1.setBorder(null);
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
+            }
+        });
+        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField1MouseClicked(evt);
+            }
+        });
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 350, 30));
+
+        jTextField2.setBackground(new java.awt.Color(51, 51, 51));
+        jTextField2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTextField2.setBorder(null);
+        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField2FocusLost(evt);
+            }
+        });
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
+        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 50, 350, 30));
+
+        jTextField3.setBackground(new java.awt.Color(51, 51, 51));
+        jTextField3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField3.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTextField3.setBorder(null);
+        jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField3FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField3FocusLost(evt);
+            }
+        });
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField3KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
+        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 90, 350, 30));
+
+        jTextField4.setBackground(new java.awt.Color(51, 51, 51));
+        jTextField4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField4.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTextField4.setBorder(null);
+        jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField4FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField4FocusLost(evt);
+            }
+        });
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField4KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
+        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 130, 350, 30));
+
+        jTextField8.setBackground(new java.awt.Color(51, 51, 51));
+        jTextField8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jTextField8.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField8.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTextField8.setBorder(null);
+        jTextField8.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField8FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField8FocusLost(evt);
+            }
+        });
+        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField8ActionPerformed(evt);
+            }
+        });
+        jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField8KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField8KeyTyped(evt);
+            }
+        });
+        jPanel2.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, 340, 30));
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Age:");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, 40, 20));
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Date Of Birth:");
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 80, 20));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Last Name:");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 200, 20));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("First Name:");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 130, 20));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Student No.:");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 238, 20));
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Gender:");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 60, 20));
+
+        jRadioButton1.setBackground(new java.awt.Color(51, 51, 51));
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton1.setText("MALE");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, 122, -1));
+
+        jRadioButton2.setBackground(new java.awt.Color(51, 51, 51));
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton2.setText("FEMALE");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 60, 134, -1));
+
+        jTextField9.setBackground(new java.awt.Color(51, 51, 51));
+        jTextField9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jTextField9.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField9.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTextField9.setBorder(null);
+        jTextField9.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField9FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField9FocusLost(evt);
+            }
+        });
+        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField9ActionPerformed(evt);
+            }
+        });
+        jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField9KeyTyped(evt);
+            }
+        });
+        jPanel2.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 200, 340, 30));
+
+        jTextField6.setBackground(new java.awt.Color(51, 51, 51));
+        jTextField6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jTextField6.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField6.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTextField6.setBorder(null);
+        jTextField6.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField6FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField6FocusLost(evt);
+            }
+        });
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField6KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField6KeyTyped(evt);
+            }
+        });
+        jPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 120, 340, 30));
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("Course:");
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, 60, 30));
+
+        jComboBox1.setBackground(java.awt.Color.gray);
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "BSBA", "BSA", "BSHM", "BSED ENGLISH", "BSED FILIPINO", "BS BIO-SCIENCE", "BS MATHEMATICS", "BS PSYCHOLOGY", "BS IT", "BS COM SCI", "BLIS", "ACT", "BS CE", "BS CPE", "BS CRIM" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 90, 340, 30));
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("Gmail:");
+        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, 40, 20));
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("Contact No.:");
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, 70, 20));
+
+        jTextField5.setBackground(new java.awt.Color(51, 51, 51));
+        jTextField5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jTextField5.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField5.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTextField5.setBorder(null);
+        jTextField5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField5FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField5FocusLost(evt);
+            }
+        });
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField5KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField5KeyTyped(evt);
+            }
+        });
+        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 160, 340, 30));
+
+        add.setBackground(new java.awt.Color(0, 102, 255));
+        add.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        add.setForeground(new java.awt.Color(255, 255, 255));
+        add.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        add.setText("ADD");
+        add.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        add.setOpaque(true);
+        add.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                addMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                addMouseExited(evt);
+            }
+        });
+        jPanel2.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 260, 120, 30));
+
+        update.setBackground(new java.awt.Color(0, 102, 255));
+        update.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        update.setForeground(new java.awt.Color(255, 255, 255));
+        update.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        update.setText("UPDATE");
+        update.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        update.setOpaque(true);
+        update.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                updateMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                updateMouseExited(evt);
+            }
+        });
+        jPanel2.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(414, 260, 127, 30));
+
+        delete.setBackground(new java.awt.Color(0, 102, 255));
+        delete.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        delete.setForeground(new java.awt.Color(255, 255, 255));
+        delete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        delete.setText("DELETE");
+        delete.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        delete.setOpaque(true);
+        delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                deleteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                deleteMouseExited(evt);
+            }
+        });
+        jPanel2.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(551, 260, 122, 30));
+
+        clear.setBackground(new java.awt.Color(0, 102, 255));
+        clear.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        clear.setForeground(new java.awt.Color(255, 255, 255));
+        clear.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        clear.setText("CLEAR");
+        clear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        clear.setOpaque(true);
+        clear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clearMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                clearMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                clearMouseExited(evt);
+            }
+        });
+        jPanel2.add(clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(683, 260, 119, 30));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 160, 350, 10));
+        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 120, 350, 10));
+        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 350, 10));
+        jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 350, 10));
+        jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 340, 10));
+        jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 150, 340, 10));
+        jPanel2.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, 340, 10));
+        jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 230, 340, 10));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 230, 10));
+
+        jTextField11.setBackground(new java.awt.Color(51, 51, 51));
+        jTextField11.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jTextField11.setForeground(java.awt.Color.lightGray);
+        jTextField11.setText("Search Student No.....");
+        jTextField11.setBorder(null);
+        jTextField11.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField11FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField11FocusLost(evt);
+            }
+        });
+        jTextField11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField11MouseClicked(evt);
+            }
+        });
+        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField11ActionPerformed(evt);
+            }
+        });
+        jTextField11.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField11KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField11KeyTyped(evt);
+            }
+        });
+        jPanel2.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 215, 30));
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("Section:");
+        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(519, 130, 50, 20));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Middle Name:");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 244, 20));
+
+        jDateChooser1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jDateChooser1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 180, 350, 30));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 950, -1));
+
+        jPanel3.setBackground(new java.awt.Color(0, 102, 153));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        qwe.setBackground(new java.awt.Color(0, 153, 204));
+        qwe.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        qwe.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        qwe.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Student No.", "Frist Name", "Last Name", "Middle Name", "DateOfBirth", "Age", "Gender", "Course", "Section", "Gmail", "Contact No.", "Image"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        qwe.setToolTipText("");
+        qwe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        qwe.setFocusable(false);
+        qwe.setGridColor(new java.awt.Color(0, 102, 204));
+        qwe.setRowHeight(26);
+        qwe.setSelectionBackground(new java.awt.Color(0, 102, 204));
+        qwe.setUpdateSelectionOnSort(false);
+        qwe.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                qweFocusGained(evt);
+            }
+        });
+        qwe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                qweMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(qwe);
+
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 930, 250));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 950, 270));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 40, 30));
+
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("WELCOME TO STUDENT INFORMATION");
+        jLabel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLabel2.setOpaque(true);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 950, 50));
+
+        jLabel3.setBackground(new java.awt.Color(204, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Segoe Script", 1, 20)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("X");
+        jLabel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLabel3.setOpaque(true);
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel3MouseEntered(evt);
+            }
+        });
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 0, 20, 20));
+
+        jLabel4.setBackground(new java.awt.Color(0, 51, 255));
+        jLabel4.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("_");
+        jLabel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLabel4.setOpaque(true);
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel4MouseEntered(evt);
+            }
+        });
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, 20, 20));
+
+        jLabel1.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/xampp/student.jpg"))); // NOI18N
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102), 20));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 690));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 620, -1, -1));
+
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here
+        gender = "FEMALE";
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+        gender = "MALE";
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField8ActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField9ActionPerformed
+
+    private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
+String currentDir=System.getProperty("user.dir");
+            try {
+                 Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+             Connection con = DriverManager.getConnection("jdbc:derby:"+currentDir+"\\student1","andrew","andrew");
+                String sql =  "INSERT INTO studentinformation(StudentNo,FirstName,LastName,MiddleName,DateOfBirth,Age,"
+                        + "Gender,Course,Section,Gmail,ContactNo) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+                PreparedStatement pst = con.prepareStatement(sql);
+                pst.setString(1,jTextField1.getText());
+                pst.setString(2,jTextField2.getText());
+                pst.setString(3,jTextField3.getText());
+                pst.setString(4,jTextField4.getText());
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                String date = sdf.format(jDateChooser1.getDate());
+                pst.setString(5, date);
+                pst.setString(6,jTextField8.getText());
+                pst.setString(7,gender);
+                pst.setString(8, (String) jComboBox1.getSelectedItem());
+                pst.setString(9,jTextField6.getText());
+                pst.setString(10,jTextField5.getText());
+                pst.setString(11,jTextField9.getText());
+                pst.executeUpdate();
+                DefaultTableModel model = (DefaultTableModel)qwe.getModel();
+                model.setRowCount(0);
+                update_table();
+                JOptionPane.showMessageDialog(null, "Added!");
+                jTextField1.setText(null);
+                jTextField2.setText(null);
+                jTextField3.setText(null);
+                jTextField4.setText(null);
+                jDateChooser1.setDate(null);
+                jTextField8.setText(null);
+                buttonGroup1.clearSelection();
+                jComboBox1.setSelectedIndex(0);
+                jTextField6.setText(null);
+                jTextField5.setText(null);
+                jTextField9.setText(null);
+                  jTextField1.requestFocus();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "STUDENT NUMBER ALREADY EXIST!"
+                ,"",JOptionPane.ERROR_MESSAGE);
+                           }
+    }//GEN-LAST:event_addMouseClicked
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jTextField1FocusGained
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTextField1FocusLost
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        // TODO add your handling code here:
+        char q = evt.getKeyChar();
+        if(!(Character.isDigit(q)))
+        {
+            getToolkit().beep();
+            evt.consume();
+        
+        }
+        
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTextField2FocusGained
+
+    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+        // TODO add your handling code here:
+         
+
+    }//GEN-LAST:event_jTextField2FocusLost
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
+        // TODO add your handling code here
+        
+    }//GEN-LAST:event_jTextField3FocusGained
+
+    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
+        // TODO add your handling code here:
+      
+
+    }//GEN-LAST:event_jTextField3FocusLost
+
+    private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
+        // TODO add your handling code here:
+         
+    }//GEN-LAST:event_jTextField4FocusGained
+
+    private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
+        // TODO add your handling code here:
+     
+    }//GEN-LAST:event_jTextField4FocusLost
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTextField4KeyTyped
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+        // TODO add your handling code here:
+      ;
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jTextField8FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusGained
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jTextField8FocusGained
+
+    private void jTextField8FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusLost
+        // TODO add your handling code here:
+     
+    }//GEN-LAST:event_jTextField8FocusLost
+
+    private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyTyped
+        // TODO add your handling code here
+       char q = evt.getKeyChar();
+        if(!(Character.isDigit(q)))
+        {
+            getToolkit().beep();
+            evt.consume();
+        
+        }
+    }//GEN-LAST:event_jTextField8KeyTyped
+
+    private void jTextField6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusGained
+        // TODO add your handling code here:
+ 
+    }//GEN-LAST:event_jTextField6FocusGained
+
+    private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jTextField6FocusLost
+
+    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
+        // TODO add your handling code here:
+         
+    }//GEN-LAST:event_jTextField6KeyTyped
+
+    private void jTextField5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusGained
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_jTextField5FocusGained
+
+    private void jTextField5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusLost
+        // TODO add your handling code here
+                            
+    }//GEN-LAST:event_jTextField5FocusLost
+
+    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_jTextField5KeyTyped
+
+    private void jTextField9FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField9FocusGained
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jTextField9FocusGained
+
+    private void jTextField9FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField9FocusLost
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_jTextField9FocusLost
+
+    private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyTyped
+        // TODO add your handling code here:
+        char q = evt.getKeyChar();
+        if(!(Character.isDigit(q)))
+        {
+            getToolkit().beep();
+            evt.consume();
+        
+        }
+    }//GEN-LAST:event_jTextField9KeyTyped
+
+    private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered
+        // TODO add your handling code here:
+         logout.setBackground(Color.white);
+        logout.setForeground(Color.red);
+    }//GEN-LAST:event_logoutMouseEntered
+
+    private void logoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseExited
+        // TODO add your handling code here:
+         logout.setBackground(Color.red);
+        logout.setForeground(Color.white);
+    }//GEN-LAST:event_logoutMouseExited
+
+    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
+        // TODO add your handling code here:
+        login info = new login();
+        info.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_logoutMouseClicked
+
+    private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
+  
+        String currentDir=System.getProperty("user.dir");
+        try
+        {          
+         
+             Connection con = DriverManager.getConnection("jdbc:derby:"+currentDir+"\\student1","andrew","andrew");
+            String sql = "UPDATE studentinformation SET FirstName=?,LastName=?,MiddleName=?,DateOfBirth=?,Age=?,Gender=?,Course=?,Section=?,Gmail=?,ContactNo=? WHERE StudentNo=?";
+             PreparedStatement pst = con.prepareStatement(sql);  
+        pst.setString(11,jTextField1.getText());
+             pst.setString(1,jTextField2.getText());
+         pst.setString(2,jTextField3.getText());
+         pst.setString(3,jTextField4.getText());
+         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                String date = sdf.format(jDateChooser1.getDate());
+                pst.setString(4, date);
+         pst.setString(5,jTextField8.getText());
+          pst.setString(6,gender);
+          pst.setString(7, (String) jComboBox1.getSelectedItem());
+          pst.setString(8,jTextField6.getText());
+          pst.setString(9,jTextField5.getText());
+          pst.setString(10,jTextField9.getText());
+    
+        pst.executeUpdate();
+         JOptionPane.showMessageDialog(null, "Updated!");
+         jTextField1.setText(null);
+            jTextField2.setText(null);
+            jTextField3.setText(null);
+            jTextField4.setText(null);
+            jDateChooser1.setDate(null);
+            jTextField8.setText(null);
+           buttonGroup1.clearSelection();
+             jComboBox1.setSelectedIndex(0);
+             jTextField6.setText(null);
+             jTextField5.setText(null);
+             jTextField9.setText(null);
+             jTextField1.requestFocus();
+             jTextField11.setText("Search Student No.....");
+             jTextField11.setForeground(Color.LIGHT_GRAY);
+             
+        DefaultTableModel model = (DefaultTableModel)qwe.getModel();
+        model.setRowCount(0);
+        update_table();
+        
+            
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(studentinfo.class.getName()).log(Level.SEVERE, null, ex);
+         JOptionPane.showMessageDialog(null, ex);
+        } 
+    }//GEN-LAST:event_updateMouseClicked
+
+    private void qweMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_qweMouseClicked
+        // TODO add your handling code here:
+       try {
+        jTextField1.requestFocus();
+        int i = qwe.getSelectedRow();
+       TableModel model = qwe.getModel();
+      jTextField1.setText(model.getValueAt(i, 0).toString()); 
+      jTextField2.setText(model.getValueAt(i, 1).toString());
+      jTextField3.setText(model.getValueAt(i, 2).toString());
+      jTextField4.setText(model.getValueAt(i, 3).toString());
+     
+    
+       Date date = new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(i, 4));
+        jDateChooser1.setDate(date);
+        
+      jTextField8.setText(model.getValueAt(i, 5).toString());
+       gender = model.getValueAt(i, 6).toString();
+      if(gender.equals("MALE")){
+          jRadioButton1.setSelected(true);
+      }
+      else
+      {
+       jRadioButton2.setSelected(true);
+      }
+      String course = model.getValueAt(i, 7).toString();
+      switch(course){
+      case"-":
+          jComboBox1.setSelectedIndex(0);
+          break;
+          case"BSBA":
+          jComboBox1.setSelectedIndex(1);
+          break;
+            case"BSA":
+          jComboBox1.setSelectedIndex(2);
+          break;
+          case"BSHM":
+          jComboBox1.setSelectedIndex(3);
+          break;
+             case"BSED ENGLISH":
+          jComboBox1.setSelectedIndex(4);                                       
+          break;
+           case"BSED FILIPINO":
+          jComboBox1.setSelectedIndex(5);
+          break;
+           case"BS BIO-SCIENCE":
+          jComboBox1.setSelectedIndex(6);
+          break;
+           case"BS MATHEMATICS":
+          jComboBox1.setSelectedIndex(7);
+          break;
+           case"BS PSYCHOLOGY":
+          jComboBox1.setSelectedIndex(8);
+          break;
+           case"BS IT":
+          jComboBox1.setSelectedIndex(9);
+          break;
+           case"BS COM SCI":
+          jComboBox1.setSelectedIndex(10);
+          break;
+           case"BLIS":
+          jComboBox1.setSelectedIndex(11);
+          break;
+           case"ACT":
+          jComboBox1.setSelectedIndex(12);
+          break;
+           case"BS CE":
+          jComboBox1.setSelectedIndex(13);
+          break;
+           case"BS CPE":
+          jComboBox1.setSelectedIndex(14);
+          break;
+           case"BS CRIM":
+          jComboBox1.setSelectedIndex(15);
+          break;
+      }
+       jTextField6.setText(model.getValueAt(i, 8).toString());
+        jTextField5.setText(model.getValueAt(i, 9).toString());
+         jTextField9.setText(model.getValueAt(i, 10).toString());
+         
+         
+          } catch (ParseException ex) {
+        Logger.getLogger(studentinfo.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
+    }//GEN-LAST:event_qweMouseClicked
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
+    int q= JOptionPane.showConfirmDialog(this, "ARE YOU SURE YOU WANT TO DELETE THIS INFO?","warning",JOptionPane.YES_NO_OPTION);
+     if(q==0){
+      String currentDir=System.getProperty("user.dir");
+         try {
+           int delete = Integer.parseInt(jTextField1.getText());
+             Connection con = DriverManager.getConnection("jdbc:derby:"+currentDir+"\\student1","andrew","andrew");
+            String sql =  "DELETE FROM studentinformation WHERE StudentNo="+delete;
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.executeUpdate();
+        update_table();
+            jTextField1.setText(null);
+            jTextField2.setText(null);
+            jTextField3.setText(null);
+            jTextField4.setText(null);
+             jDateChooser1.setDate(null);
+            jTextField8.setText(null);
+           buttonGroup1.clearSelection();
+             jComboBox1.setSelectedIndex(0);
+             jTextField6.setText(null);
+             jTextField5.setText(null);
+             jTextField9.setText(null);
+               jTextField1.requestFocus();
+        }
+        catch(Exception e)
+        {
+ JOptionPane.showMessageDialog(this, e);
+        }
+     
+     }
+     
+    
+    }//GEN-LAST:event_deleteMouseClicked
+
+    private void jTextField11KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyReleased
+        // TODO add your handling code here:
+        
+           if(jTextField11.getText().isEmpty()){
+    update_table();
+    }else{
+        String currentDir=System.getProperty("user.dir");
+               try
+        {
+             Connection con = DriverManager.getConnection("jdbc:derby:"+currentDir+"\\student1","andrew","andrew");
+            String sql =  "SELECT * FROM studentinformation WHERE StudentNo=?";
+             st = con.prepareStatement(sql);
+             st.setString(1,jTextField11.getText());
+             rs = st.executeQuery();
+       qwe.setModel(DbUtils.resultSetToTableModel(rs));
+         
+        }
+        catch(Exception e)
+        {
+        JOptionPane.showMessageDialog(this, e);
+        
+        
+        }finally
+        {
+        try{
+      rs.close();
+      st.close();
+        }
+        catch(Exception e)
+        {
+        
+        }
+        }
+           }
+    }//GEN-LAST:event_jTextField11KeyReleased
+
+    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jTextField11ActionPerformed
+
+    private void jTextField11KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField11KeyTyped
+
+    private void jTextField11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField11MouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTextField11MouseClicked
+
+    private void jTextField11FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField11FocusGained
+        // TODO add your handling code here:
+        jTextField11.setText("");
+        jTextField11.setForeground(Color.white);
+       
+        
+    }//GEN-LAST:event_jTextField11FocusGained
+
+    private void jTextField11FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField11FocusLost
+        // TODO add your handling code here:
+         if(jTextField11.getText().isEmpty()){
+        jTextField11.setText("Enter Student No...");
+        jTextField11.setForeground(Color.LIGHT_GRAY);
+         }
+    }//GEN-LAST:event_jTextField11FocusLost
+
+    private void clearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearMouseClicked
+        // TODO add your handling code here:
+        jTextField1.setText(null);
+            jTextField2.setText(null);
+            jTextField3.setText(null);
+            jTextField4.setText(null);
+            jDateChooser1.setDate(null);
+            jTextField8.setText(null);
+           buttonGroup1.clearSelection();
+             jComboBox1.setSelectedIndex(0);
+             jTextField6.setText(null);
+             jTextField5.setText(null);
+             jTextField9.setText(null);
+             jTextField1.requestFocus();
+    }//GEN-LAST:event_clearMouseClicked
+
+    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1MouseClicked
+
+    private void addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseEntered
+        // TODO add your handling code here:
+        add.setBackground(Color.white);
+        add.setForeground(new Color(0,102,255));
+    }//GEN-LAST:event_addMouseEntered
+
+    private void addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseExited
+        // TODO add your handling code here:
+        add.setBackground(new Color(0,102,255));
+        add.setForeground(Color.white);
+    }//GEN-LAST:event_addMouseExited
+
+    private void updateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseEntered
+        // TODO add your handling code here:
+        update.setBackground(Color.white);
+        update.setForeground(new Color(0,102,255));
+    }//GEN-LAST:event_updateMouseEntered
+
+    private void updateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseExited
+        // TODO add your handling code here:
+         update.setBackground(new Color(0,102,255));
+        update.setForeground(Color.white);
+    }//GEN-LAST:event_updateMouseExited
+
+    private void deleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseEntered
+        // TODO add your handling code here:
+         delete.setBackground(Color.white);
+        delete.setForeground(new Color(0,102,255));
+    }//GEN-LAST:event_deleteMouseEntered
+
+    private void deleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseExited
+        // TODO add your handling code here:
+          delete.setBackground(new Color(0,102,255));
+        delete.setForeground(Color.white);
+    }//GEN-LAST:event_deleteMouseExited
+
+    private void clearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearMouseEntered
+        // TODO add your handling code here:
+         clear.setBackground(Color.white);
+        clear.setForeground(new Color(0,102,255));
+    }//GEN-LAST:event_clearMouseEntered
+
+    private void clearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearMouseExited
+        // TODO add your handling code here:
+          clear.setBackground(new Color(0,102,255));
+        clear.setForeground(Color.white);
+    }//GEN-LAST:event_clearMouseExited
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        // TODO add your handling code here:
+          if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+          {
+          jTextField2.requestFocus();
+          }
+
+    }//GEN-LAST:event_jTextField1KeyPressed
+
+    private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+          {
+          jTextField4.requestFocus();
+          }
+    }//GEN-LAST:event_jTextField3KeyPressed
+
+    private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
+        // TODO add your handling code here:
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+          {
+          jTextField8.requestFocus();
+          }
+    }//GEN-LAST:event_jTextField4KeyPressed
+
+    private void jTextField8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+          {
+          jTextField6.requestFocus();
+          }
+    }//GEN-LAST:event_jTextField8KeyPressed
+
+    private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+          {
+          jTextField5.requestFocus();
+          }
+    }//GEN-LAST:event_jTextField6KeyPressed
+
+    private void jTextField5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+          {
+          jTextField9.requestFocus();
+          }
+    }//GEN-LAST:event_jTextField5KeyPressed
+
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+          {
+          jTextField3.requestFocus();
+          }
+    }//GEN-LAST:event_jTextField2KeyPressed
+
+    private void qweFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_qweFocusGained
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_qweFocusGained
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel3MouseEntered
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+        
+       this.setExtendedState(studentinfo.ICONIFIED);
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel4MouseEntered
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(studentinfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(studentinfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(studentinfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(studentinfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new studentinfo().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel add;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel clear;
+    private javax.swing.JLabel delete;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
+    private javax.swing.JLabel logout;
+    public static javax.swing.JTable qwe;
+    private javax.swing.JLabel update;
+    // End of variables declaration//GEN-END:variables
+private String gender;
+
+}
